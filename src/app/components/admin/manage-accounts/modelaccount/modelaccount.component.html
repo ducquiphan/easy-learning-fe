@@ -1,0 +1,43 @@
+<div class="modal-header">
+    <h4 class="modal-title">Thông tin tài khoản</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form [formGroup]="infoUserF" (ngSubmit)="onUpdate()">
+    <div class="modal-body">
+      <!-- Hiển thị thông tin tài khoản -->
+        <div class="mb-2">
+          <label>ID</label>
+          <input type="text" class="form-control" formControlName="accountId" [attr.disabled]="isInputDisabled ? true : null" readonly>
+        </div>
+        <div class="mb-2">
+          <label>Username</label>
+          <input type="text" class="form-control" formControlName="username" [attr.disabled]="isInputDisabled ? true : null" readonly>
+        </div>
+        <div class="mb-2">
+          <label>Full name</label>
+          <input type="text" class="form-control" formControlName="fullName">
+        </div>
+        <div class="mb-2">
+          <label>Email</label>
+          <input type="text" class="form-control" formControlName="email">
+        </div>
+        <div class="mb-2 roles_group">
+          <label>Status : </label>
+          <option *ngIf="account.locked == false" selected>Active</option>
+          <option *ngIf="account.locked == true" selected>Blocked</option>
+        </div>
+        <div class="mb-2 roles_group" formArrayName="roles">
+          <label>Roles : </label>
+          <div *ngFor="let item of defaultRoles; let i = index">
+            <input type="checkbox" [value]="item.role" [checked]="item.state" [formControlName]="i"> {{item.role}}
+          </div> 
+        </div>
+      <!-- Thêm các trường thông tin khác của tài khoản nếu cần -->
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" (click)="activeModal.close('Close click')">Đóng</button>
+      <button type="submit" class="btn btn-primary">Lưu</button>
+    </div>
+  </form>    

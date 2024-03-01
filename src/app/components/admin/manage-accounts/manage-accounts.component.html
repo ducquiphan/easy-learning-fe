@@ -1,0 +1,85 @@
+<ng-container *ngIf="(accountsState$ | async) as state">
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Manage Accounts</h1>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</div>
+
+<!-- Main content -->
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <form #searchForm="ngForm" (ngSubmit)="goToPage(searchForm.value.username)" class="d-flex" role="search">
+                            <input name="username" ngModel class="form-control me-2" type="search" placeholder="Search by username ..." aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Full name</th>
+                                    <th>Username</th>
+                                    <th>Provider</th>
+                                    <th>Role</th>
+                                    <th>Status</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let account of state.appData?.data.content">
+                                    <td>{{account.fullName}}</td>
+                                    <td>{{account.username}}</td>
+                                    <td>{{account.provider}}</td>
+                                    <td>{{account.roles}}</td>
+                                    <td>
+                                        <span class="p-1 fs--1 rounded-pill text-bg-success" *ngIf="!account.locked">Active</span>
+                                        <span class="p-1 fs--1 rounded-pill text-bg-danger" *ngIf="account.locked">Blocked</span>
+                                    </td>
+                                    <td>
+                                        <button class="btn btn-primary btn-sm me-2" (click)="openModal(account)">Edit</button>
+                                        <button class="btn btn-danger btn-sm" (click)="deleteAccount(account)">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-end  mt-3">
+                              <li class="page-item pointer" [ngClass]="(currentPage$ | async) == 0 ? 'disabled' : ''">
+                                <a class="page-link" (click)="goToNextOrPrevPage('prev', searchForm.value.username)" aria-label="Previous">
+                                  <span aria-hidden="true">&laquo;</span>
+                                </a>
+                              </li>
+                              <li *ngFor="let page of [].constructor(state.appData?.data.totalPages); let i = index;" 
+                                  [ngClass]="i == (currentPage$ | async) ? 'active' : ''"  class="page-item pointer">
+                                <a (click)="goToPage(searchForm.value.username, i)" class="page-link">{{i + 1}}</a>
+                            </li>
+                              <li class="page-item pointer" [ngClass]="(currentPage$ | async) == (state.appData?.data.totalPages - 1) ? 'disabled' : ''">
+                                <a class="page-link" (click)="goToNextOrPrevPage('next', searchForm.value.username)" aria-label="Next">
+                                  <span aria-hidden="true">&raquo;</span>
+                                </a>
+                              </li>
+                            </ul>
+                          </nav>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>
+</ng-container>

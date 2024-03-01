@@ -1,0 +1,35 @@
+<div class="modal fade" data-bs-backdrop="static" id="exampleModalToggle" aria-hidden="true"
+    aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalToggleLabel">Chỉnh sửa bài học</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="updateLessonForm" enctype="multipart/form-data">
+                    <div class="mb-3">
+                        <label for="exampleFormControlInput1" class="form-label">Tên bài học</label>
+                        <input type="text" class="form-control" id="exampleFormControlInput1" placeholder="Tên bài học"
+                            formControlName="title" />
+                    </div>
+                    <div class="mb-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Mô tả</label>
+                        <textarea class="form-control" formControlName="description" id="exampleFormControlTextarea1"
+                            placeholder="Mô tả" rows="3"></textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="formFile" class="form-label">Ảnh đại diện</label>
+                        <input class="form-control" type="file" formControlName="image" id="formFile" #fileImage>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" (click)="onUpdate(fileImage.files)" type="button">Cập nhật</button>
+            </div>
+        </div>
+    </div>
+</div>
+<button class="edit-button btn btn-primary text-left" data-bs-target="#exampleModalToggle" data-bs-toggle="modal"><i
+        class="bi bi-pen-fill"></i> Chỉnh sửa bài
+    học</button>

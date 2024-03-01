@@ -1,0 +1,17 @@
+<section>
+    <div class="container">
+        <div class="row">
+            <h1 class="text-center mb-5">BÀI HỌC CỦA TÔI</h1>
+            <div class="col-md-4 mb-4" *ngFor="let lesson of lessons" (click)="onViewDetail(lesson.id)" >
+                <div class="card h-100 lesson_item">
+                    <img class="card-img-top w-100 img_lesson" src="{{lesson.image?.url}}" alt="courses" />
+                    <div class="card-body">
+                        <h5 class="font-sans-serif fw-bold fs-md-0 fs-lg-1">{{lesson.title}}
+                        </h5><p class="text-muted fs-1 stretched-link text-decoration-none">{{lesson.description}}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end of .container-->
+</section>

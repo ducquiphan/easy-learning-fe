@@ -1,0 +1,70 @@
+<!-- Content Header (Page header) -->
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1>Manage Lessons</h1>
+            </div>
+        </div>
+    </div><!-- /.container-fluid -->
+</div>
+
+<!-- Main content -->
+<div class="content">
+    <div class="container-fluid">
+        <app-create-lesson></app-create-lesson>
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">List Lessons</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="card-body">
+                        <table class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Lesson ID</th>
+                                    <th>Title</th>
+                                    <th>Description</th>
+                                    <th>Image</th>
+                                    <th>Active</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let lesson of lessons">
+                                    <td>{{ lesson.id }}</td>
+                                    <td>{{ lesson.title }}</td>
+                                    <td>{{ lesson.description }}</td>
+                                    <td><img src="{{lesson.image.url}}" alt="" width="50"></td>
+                                    <td>{{ lesson.active }}</td>
+                                    <td><a [routerLink]="['./', lesson.id]" class="btn btn-primary">View</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination justify-content-end mt-3">
+                                <li class="page-item pointer" [ngClass]="currentPageSubject.value == 0 ? 'disabled' : ''">
+                                    <a class="page-link" (click)="prevPage()">Previous</a>
+                                </li>
+                                <li class="page-item pointer" *ngFor="let page of [].constructor(totalPages); let i = index"
+                                    [ngClass]="currentPageSubject.value == i ? 'active' : ''">
+                                    <a class="page-link" (click)="goToPage(i)">{{i + 1}}</a>
+                                </li>
+                                <li class="page-item pointer" [ngClass]="currentPageSubject.value >= totalPages - 1 ? 'disabled' : ''">
+                                    <a class="page-link" (click)="nextPage()">Next</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </div>
+    <!-- /.container-fluid -->
+</div>

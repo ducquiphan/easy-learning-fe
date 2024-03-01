@@ -1,0 +1,18 @@
+<div class="box_item">
+    <div class="title">
+        <div class="b-i-h-c-wrapper">
+            <div class="b-i-h-c text-nowrap">Quizz</div>
+        </div>
+    </div>
+
+    <div class="frame-10 mt-3 d-flex align-items-center">
+        <i class="bi bi-list-ul"></i>
+        <div class="xem-t-t-c ms-3">Xem Tất Cả</div>
+    </div>
+
+    <div class="frame-4 row mb-4">
+        <div *ngFor="let quiz of quiz$ | async" class="overlap-group-wrapper col-3">
+            <app-quiz-item [quiz]="quiz"></app-quiz-item>
+        </div>
+    </div>
+</div>

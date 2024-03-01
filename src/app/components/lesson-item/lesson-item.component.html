@@ -1,0 +1,18 @@
+<div class="rectangle border border-3"></div>
+<div class="frame-5">
+    <div class="element-person"></div>
+    <button class="frame-6 text-nowrap" (click)="onGoToLesson()">Xem Chi Tiết
+    </button>
+</div>
+<div class="rectangle-2 border border-3" [ngStyle]="{'background-image': 'url('+ lesson.image.url +')', 'background-size':'250px'}"></div>
+<div class="frame-7">
+    <div class="frame-8">
+        <img class="google-svg rounded-circle" [src]="userInfo.avatar.url" />
+        <div class="frame-wrapper"><i class="bi bi-heart frame-9"></i>
+        </div>
+    </div>
+    <div class="th-qu-kh-n">{{lesson.title}}</div>
+    <div class="element-b-nh-lu-n-wrapper">
+        <p class="element-b-nh-lu-n"></p>
+    </div>
+</div>

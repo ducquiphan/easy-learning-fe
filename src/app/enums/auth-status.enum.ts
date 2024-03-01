@@ -1,0 +1,6 @@
+export enum AuthStatus {
+    SUCCESS = 200,
+    UNAUTHORIZATION = 401,
+    INTERNAL_SERVER_ERROR = 500,
+    NOT_FOUND = 404
+}

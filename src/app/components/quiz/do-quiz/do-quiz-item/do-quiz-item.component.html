@@ -1,0 +1,23 @@
+<div class="quiz-item-frame container-fluid col-sm-11 col-11 col-md-9">
+    <div class="m-3 pb-3">
+        <div class="text-wrapper text-end mt-2 pt-4 mb-2">{{index+1}}/{{total}}</div>
+        <div class="title mb-3 p ">
+            {{quizItem.question.question}}
+        </div>
+        <p class="p">Hãy chọn một đáp án</p>
+        <div class="row m-2 d-flex justify-content-around">
+            <button  [class.disabled]="isDisabled" class="btn ans-item col-md-5 col-sm-12 m-1 disabled" [name]="shuffledArray[0]" (click)="checkAnswer(shuffledArray[0])" >
+                A. {{originalAnswers[shuffledArray[0]]}}
+            </button>
+            <button  [class.disabled]="isDisabled" class="btn ans-item col-md-5 col-sm-12 m-1" [name]="shuffledArray[1]" (click)="checkAnswer(shuffledArray[1])">
+                B. {{originalAnswers[shuffledArray[1]]}}
+            </button>
+            <button [class.disabled]="isDisabled" class="btn ans-item col-md-5 col-sm-12 m-1" [name]="shuffledArray[2]" (click)="checkAnswer(shuffledArray[2])">
+                C. {{originalAnswers[shuffledArray[2]]}}
+            </button>
+            <button [class.disabled]="isDisabled" class="btn ans-item col-md-5 col-sm-12 m-1" [name]="shuffledArray[3]" (click)="checkAnswer(shuffledArray[3])">
+                D. {{originalAnswers[shuffledArray[3]]}}
+            </button>
+        </div>
+    </div>
+</div>

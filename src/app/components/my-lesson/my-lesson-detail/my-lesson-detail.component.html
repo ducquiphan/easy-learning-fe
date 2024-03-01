@@ -1,0 +1,85 @@
+<div class="course-detailsinformation-tGM">
+    <div class="rectangle-2289-h4Z">
+    </div>
+    <div class="d-flex">
+        <div class="video-TKs" [ngStyle]="{'background-image':'url(' + (lesson.image?.url || '') + ')'}">
+            <div class="group-8599-JUu d-flex align-items-center">
+                <i class="bi bi-eye text-white me-2"></i>
+                <p class="text-MCH">740</p>
+            </div>
+        </div>
+        <div class="reference d-flex">
+            <app-btn-edit-my-lesson [lesson]="lesson" (updateEvent)="onRefresh()"></app-btn-edit-my-lesson>
+            <app-btn-edit-my-questions [questions]="lesson.questions" (deleteEvent)="onRefresh()"></app-btn-edit-my-questions>
+            <app-btn-add-my-question [idLesson]="id" (addEvent)="onRefresh()"></app-btn-add-my-question>
+            <app-btn-delete-my-lesson [id]="id"></app-btn-delete-my-lesson>
+        </div>
+    </div>
+    <div class="group-8644-cSR">
+        <div class="auto-group-ffjs-vxu">
+            <p class="learning-maxon-cinem-Thw">{{lesson.title}}</p>
+            <p class="by-carrot-labs-illu-ywB">
+                {{lesson.description}}
+            </p>
+        </div>
+        <div class="auto-group-hxsf-b7K">
+            <div class="group-8596-ihj">Flash Card</div>
+	        <app-create-quiz-from-lesson [questions]="lesson.questions"  style="height: 100%"></app-create-quiz-from-lesson>
+        </div>
+    </div>
+    <div class="line-xSy">
+    </div>
+    <div class="line-g85">
+    </div>
+    <div class="line-P4R">
+    </div>
+</div>
+
+<div id="carouselExample" class="carousel slide questions">
+    <div class="carousel-inner">
+        <div *ngFor="let item of lesson.questions; index as i; count as size" class="carousel-item"
+            [ngClass]="i == 0 ? 'active' : ''">
+            <app-flashcard [question]="item"></app-flashcard>
+        </div>
+    </div>
+    <div class="group-button">
+        <div class="btn-round" (click)="reduce()">
+            <button class="carousel-control-prev rounded-circle btn btn-primary" type="button"
+                data-bs-target="#carouselExample" data-bs-slide="prev">
+                <div class="icon-button"><i class="bi bi-arrow-left"></i></div>
+            </button>
+        </div>
+        <div>
+            {{index}}/{{size}}
+        </div>
+        <div class="btn-round" (click)="increase()">
+            <button class="carousel-control-next rounded-circle  btn btn-primary" type="button"
+                data-bs-target="#carouselExample" data-bs-slide="next">
+                <div class="icon-button"><i class="bi bi-arrow-right"></i></div>
+            </button>
+        </div>
+    </div>
+</div>
+
+
+<div class="comments mt-5">
+    <p class="text-A4V mb-4">BÌNH LUẬN</p>
+    <div class="group-8601-7FK mb-3">
+        <div class="auto-group-rhkh-qSD">
+            <img class="image-9Su rounded-circil"
+                src="https://www.shareicon.net/data/512x512/2015/09/18/103160_man_512x512.png" />
+            <div class="auto-group-udp3-TiV">
+                <p class="name-Qtd">Nguyễn Văn Sĩ</p>
+                <p class="time-M3B">khoảng 2 giờ trước</p>
+            </div>
+        </div>
+        <p class="text-5E5">Bài học rất hữu ích.
+        </p>
+    </div>
+    <p class="reviews-v1j mt-5 mb-3">Đánh giá</p>
+    <div class="form-floating">
+        <textarea class="form-control input-hRo mb-4" placeholder="Viết bình luận bài học..." id="floatingTextarea2"
+            style="height: 100px"></textarea>
+    </div>
+    <button class="group-8603-2aZ mb-4 border-0">Gửi bình luận</button>
+</div>

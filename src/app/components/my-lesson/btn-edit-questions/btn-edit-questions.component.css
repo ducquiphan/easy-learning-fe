@@ -1,0 +1,30 @@
+.edit-button{
+    margin-bottom: 10px;
+}
+
+.id-question{
+    width: 10%;
+}
+
+.title-question{
+    width: 70%;
+}
+
+.correct-question{
+    width: 15%;
+}
+
+.id-question,
+.title-question,
+.correct-question{
+    margin-right: 5px;
+}
+
+.list-question{
+    height: 300px;
+    overflow-y: scroll;
+}
+
+#exampleModalToggleAddQuess{
+    width: 1000px;
+}

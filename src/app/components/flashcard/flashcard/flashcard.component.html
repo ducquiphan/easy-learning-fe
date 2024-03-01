@@ -1,0 +1,15 @@
+<div class="card">
+    <div [id]="question.id" class="card__inner" (click)="round()">
+        <div class="card__face card__face--front">
+            <h2>{{question.question}}</h2>
+        </div>
+        <div class="card__face card__face--back">
+            <div class="card__header">
+                <h2>Đáp án</h2>
+            </div>
+            <div class="card__content d-flex align-items-center my-auto">
+                <h2 class="text-center w-100">{{question.correctAnswer}}</h2>
+            </div>
+        </div>
+    </div>
+</div>

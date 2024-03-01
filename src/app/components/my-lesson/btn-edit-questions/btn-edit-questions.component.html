@@ -1,0 +1,93 @@
+<div class="modal fade" data-bs-backdrop="static" id="exampleModalToggleQuestion" aria-hidden="true"
+    aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalToggleLabel">Chọn câu hỏi chỉnh sửa</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" [(ngModel)]="keyword" placeholder="Tìm câu hỏi cần chỉnh sửa"
+                        aria-label="Search">
+                    <button class="btn btn-outline-success" type="submit" (click)="onSearch()">Search</button>
+                </div>
+                <div class="my-2 fs-1">Danh sách câu hỏi</div>
+                <div class="list-question" data-bs-smooth-scroll="true">
+                    <div *ngFor="let question of questions" class="card d-flex">
+                        <div class="card-body w-100 d-flex align-items-center" data-bs-target="#exampleModalToggleAddQuess"
+                            (click)="onSelect(question)" data-bs-toggle="modal">
+                            <div class="id-question">{{question.id}}</div>
+                            <div class="title-question">{{question.question}}</div>
+                            <div class="correct-question">KQĐ: {{question.correctAnswer}}</div>
+                        </div>
+                        <div>
+                            <button class="btn btn-danger" (click)="onDeleteQuestion(question.id)">Xóa</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" data-bs-dismiss="#exampleModalToggleQuestion"
+                    data-bs-toggle="modal">Đóng</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" data-bs-backdrop="static" id="exampleModalToggleAddQuess" aria-hidden="true"
+    aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalToggleLabel">Chỉnh sửa câu hỏi</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form [formGroup]="questionForm">
+                    <div class="form-group">
+                        <label>Câu hỏi</label>
+                        <input type="text" class="form-control" placeholder="Câu hỏi" formControlName="title">
+                        <div class="form-group mt-2">
+                            <label>Đáp án</label>
+                            <input type="text" class="form-control m-1" placeholder="Đáp án A"
+                                formControlName="answerA">
+                            <input type="text" class="form-control m-1" placeholder="Đáp án B"
+                                formControlName="answerB">
+                            <input type="text" class="form-control m-1" placeholder="Đáp án C"
+                                formControlName="answerC">
+                            <input type="text" class="form-control m-1" placeholder="Đáp án đúng"
+                                formControlName="correctAnswer">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" data-bs-target="#exampleModalToggleCancel"
+                    data-bs-toggle="modal">Hủy</button>
+                <button class="edit-button btn btn-primary text-left" (click)="onUpdate()">Cập nhật</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" data-bs-backdrop="static" id="exampleModalToggleCancel" aria-hidden="true"
+    aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h5>Bạn có chắc muốn thoát không?</h5>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" data-bs-target="#exampleModalToggleAddQuess"
+                    data-bs-toggle="modal">Hủy</button>
+                <button class="btn btn-primary" data-bs-target="#exampleModalToggleQuestion" data-bs-toggle="modal"
+                    type="button">Thoát</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button class="edit-button btn btn-primary text-left" data-bs-target="#exampleModalToggleQuestion"
+    data-bs-toggle="modal"><i class="bi bi-list-ol"></i> Chỉnh sửa câu
+    hỏi</button>

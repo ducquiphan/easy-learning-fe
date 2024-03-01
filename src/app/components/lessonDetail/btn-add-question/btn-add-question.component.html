@@ -1,0 +1,61 @@
+<div class="modal fade" data-bs-backdrop="static" id="exampleModalToggleAdd" aria-hidden="true"
+    aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalToggleLabel">Thêm câu hỏi</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <div *ngFor="let question of questionForms.controls; let i = index">
+                        <form [formGroup]="question">
+                            <div class="form-group">
+                                <label [for]="'question'+i">Câu {{ i + 1 }}:</label>
+                                <input type="text" class="form-control" [id]="'question'+i" placeholder="Câu hỏi"
+                                    formControlName="question">
+                                <div class="form-group mt-2">
+                                    <label [for]="'answerA'+i">Đáp án:</label>
+                                    <input type="text" class="form-control m-1" [id]="'answerA'+i"
+                                        placeholder="Đáp án A" formControlName="answerA">
+                                    <input type="text" class="form-control m-1" [id]="'answerB'+i"
+                                        placeholder="Đáp án B" formControlName="answerB">
+                                    <input type="text" class="form-control m-1" [id]="'answerC'+i"
+                                        placeholder="Đáp án C" formControlName="answerC">
+                                    <input type="text" class="form-control m-1" [id]="'correctAnswer'+i"
+                                        placeholder="Đáp án đúng" formControlName="correctAnswer">
+                                </div>
+                            </div>
+                        </form>
+                        <button type="button" class="btn btn-primary px-3" (click)="onDeleteQuestionControl(i)">Xóa câu hỏi</button>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary px-3 my-3" (click)="addQuestion()">Thêm câu hỏi</button>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" data-bs-target="#exampleModalToggleCancelAdd"
+                    data-bs-toggle="modal">Hủy</button>
+                <button class="btn btn-primary" type="button" (click)="onCreateQuestion()">Lưu</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" data-bs-backdrop="static" id="exampleModalToggleCancelAdd" aria-hidden="true"
+    aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body">
+                <h5>Bạn có chắc muốn thoát không?</h5>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-danger" data-bs-target="#exampleModalToggleAdd"
+                    data-bs-toggle="modal">Hủy</button>
+                <button class="btn btn-primary" data-bs-dismiss="#exampleModalToggleCancel" data-bs-toggle="modal"
+                    type="button">Thoát</button>
+            </div>
+        </div>
+    </div>
+</div>
+<button class="edit-button btn btn-primary text-left" data-bs-target="#exampleModalToggleAdd" data-bs-toggle="modal"><i
+        class="bi bi-plus-circle"></i> Thêm câu hỏi mới</button>

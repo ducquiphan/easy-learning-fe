@@ -1,0 +1,132 @@
+.rectangle {
+  position: absolute;
+  width: 267px;
+  height: 178px;
+  top: 0;
+  left: 0;
+  background-color: #ffffff;
+  border-radius: 20px;
+  border: 1px solid;
+  border-color: var(--white);
+}
+
+.frame-5 {
+  display: flex;
+  width: 256px;
+  height: 19px;
+  align-items: center;
+  gap: 14px;
+  position: absolute;
+  top: 144px;
+  left: 30px;
+}
+
+.element-person {
+  position: relative;
+  width: 110px;
+  font-family: "Quicksand-Regular", Helvetica;
+  font-weight: 400;
+  color: var(--black);
+  font-size: 12px;
+  letter-spacing: 0.24px;
+}
+
+.frame-6 {
+  display: flex;
+  width: 96px;
+  height: 35px;
+  font-size: 14px;
+  background-color: #fbbc05;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+  position: relative;
+  margin-top: -8px;
+  margin-bottom: -8px;
+}
+
+.rectangle-2 {
+  position: absolute;
+  width: 244px;
+  height: 119px;
+  top: 5px;
+  left: 11px;
+  background-color: #fbbc05;
+  border-radius: 10px;
+  opacity: 0.15;
+}
+
+.frame-7 {
+  display: flex;
+  flex-direction: column;
+  width: 222px;
+  height: 125px;
+  align-items: flex-start;
+  gap: 10px;
+  position: absolute;
+  top: 13px;
+  left: 22px;
+}
+
+.frame-8 {
+  display: inline-flex;
+  height: 31px;
+  align-items: center;
+  gap: 142px;
+  position: relative;
+}
+
+.google-svg {
+  position: relative;
+  width: 30px;
+  height: 31px;
+}
+
+.frame-wrapper {
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.th-qu-kh-n {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  position: relative;
+  width: 100%;
+  font-family: "Quicksand-SemiBold", Helvetica;
+  font-weight: 600;
+  color: var(--black);
+  font-size: 20px;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.element-b-nh-lu-n-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  position: relative;
+  flex: 0 0 auto;
+}
+
+.element-b-nh-lu-n {
+  position: relative;
+  width: fit-content;
+  margin-top: -1px;
+  -webkit-text-stroke: 1px #645f5f;
+  font-family: "Quicksand-Regular", Helvetica;
+  font-weight: 400;
+  color: var(--black);
+  font-size: 12px;
+  letter-spacing: 0;
+  line-height: normal;
+  text-decoration: underline;
+  border-color: var(--black-2);
+}

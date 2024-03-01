@@ -1,0 +1,41 @@
+<div class="container mt-4">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title">Thông tin người dùng</h5>
+          </div>
+          <div class="card-body">
+            <form method="post" [formGroup]="infoF" (submit)="onUpdate()" class="form_data">
+              <div class="mb-3">
+                <label for="account" class="form-label">Username</label>
+                <input type="text" class="form-control" id="account" placeholder="{{isLogin.username}}" disabled>
+              </div>
+              <div class="mb-3">
+                <label for="avatar" class="form-label">Avatar</label>
+                <!-- để trống nếu không muốn cập nhật -->
+                <span class="text-muted"> *Giữ nguyên nếu không muốn cập nhật</span>
+                <input type="file" class="form-control" id="avatar" formControlName="avatar">
+              </div>
+              <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <span class="text-muted"> *Giữ nguyên nếu không muốn cập nhật</span>
+                <input type="email" class="form-control" id="email" placeholder="{{isLogin.userInfo.email}}" formControlName="email">
+              </div>
+              <div class="mb-3">
+                <label for="fullname" class="form-label">Full Name</label>
+                <span class="text-muted"> *Giữ nguyên nếu không muốn cập nhật</span>
+            <input type="text" class="form-control" id="fullname" placeholder="{{isLogin.userInfo.fullName}}" formControlName="fullName">
+              </div>
+              <!-- <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <span class="text-muted"> *Để trống nếu không muốn cập nhật</span> -->
+                <input type="hidden" class="form-control" id="password" placeholder="Enter password" formControlName="password">
+              <!-- </div> -->
+              <button type="submit" class="btn btn-primary">Cập nhật</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
